@@ -22,7 +22,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         path: deploy
-        ref: gh_pages
+        ref: gh-pages
         token : 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
 
         
