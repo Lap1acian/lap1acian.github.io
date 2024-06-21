@@ -42,9 +42,7 @@ jobs:
       env:
         GITHUB_TOKEN: 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
       run: |
-        git checkout gh-pages
-        rsync -avhP public/ .deploy_git/
-        cd .deploy_git
+        git checkout gh-pages public/*
         
         git add .
         git commit -m "Deploy site: ${{ steps.commitinfo.outputs.message }}" || echo "No changes to commit"
