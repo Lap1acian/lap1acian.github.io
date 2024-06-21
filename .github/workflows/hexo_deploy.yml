@@ -54,6 +54,7 @@ jobs:
       env:
         GITHUB_TOKEN: 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
       run: |
+        ls -alh
         rsync -avh /build/public/* /deploy
         cd /deploy
         git add .
