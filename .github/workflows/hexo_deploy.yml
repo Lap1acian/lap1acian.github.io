@@ -35,6 +35,8 @@ jobs:
       run: |
         npm install
         npm install -g hexo-cli
+        npm uninstall hexo-renderer-marked --save
+        npm install hexo-renderer-kramed --save
         
       working-directory: build
       
