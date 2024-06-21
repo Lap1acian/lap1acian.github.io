@@ -10,12 +10,22 @@ jobs:
 
     steps:
 
-    - name: Checkout the repository
+    - name: Checkout the build repository
       uses: actions/checkout@v4
       with:
+        path: build
         submodules: true
         token : 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
 
+    
+    - name: Checkout the deploy repository
+      uses: actions/checkout@v4
+      with:
+        path: deploy
+        ref: gh_pages
+        token : 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
+
+        
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
@@ -32,7 +42,9 @@ jobs:
       run: npm install -g hexo-cli
 
     - name: Generate static files
-      run: hexo generate
+      run: |
+        cd build
+        hexo generate
 
     - name: Get current commit message
       id: commitinfo
@@ -42,8 +54,8 @@ jobs:
       env:
         GITHUB_TOKEN: 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
       run: |
-        git checkout gh-pages public/*
-        
+        rsync -avh ./public/* /deploy
+        cd /deploy
         git add .
         git commit -m "Deploy site: ${{ steps.commitinfo.outputs.message }}" || echo "No changes to commit"
         git push
