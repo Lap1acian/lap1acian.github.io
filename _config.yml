@@ -98,6 +98,19 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: arknights
 
+# Security
+encrypt: # hexo-blog-encrypt
+  abstract: AUTHORIZED PERSONNEL ONLY
+  message: PASSWORD
+  tags:
+  - {name: technical_report, password: 05uJR\^Ax?~+tJEgI2W:!`>MOcc#3RufU#Z6dMEY}
+  - {name: slightly_secret, password: xDK-f2gT$.1W-$_A=RrCL.!"%}
+  wrong_pass_message: Incorrect password.
+  wrong_hash_message: Oh, these decrypted content cannot be verified, but you can still have a look.
+
+
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
