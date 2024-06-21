@@ -32,7 +32,9 @@ jobs:
         node-version: '20'
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd build
+        npm install
 
     - name: Set up Git
       run: |
@@ -42,9 +44,7 @@ jobs:
       run: npm install -g hexo-cli
 
     - name: Generate static files
-      run: |
-        cd build
-        hexo generate
+      run: hexo generate
 
     - name: Get current commit message
       id: commitinfo
