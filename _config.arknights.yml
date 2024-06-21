@@ -1,0 +1,149 @@
+# 탭 아이콘
+favicon:
+  type: "image/x-icon"
+  href: "/favicon.ico"
+
+# canvas 동적 배경
+canvas_dust: true
+
+# 기본 색상 모드 dark / dark-only / light / light-only / auto
+# dark 어두운 모드
+# light 밝은 모드
+# -only 색상 모드 고정
+# auto 시스템에 따라 변경
+color: dark
+
+# <body> 배경 이미지 링크
+background_image:
+  # dark: https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg # 어두운 모드
+  dark: /img/D_BG.png
+  light: /img/L_BG.png # 밝은 모드
+
+# 네비게이션 바
+menu:
+  Home: ""
+  # About: about/
+  # Contact: contact/
+  Archives: archives/
+
+# 사이드바
+aside:
+  in_left: false # 사이드바 왼쪽 true / false
+  logo: https://ak.hypergryph.com/assets/index/images/ak/pc/faction/4.png # 이미지 링크, 1:1 비율 권장
+  dr: # 사이드바 Dr. 링크
+  icp: # ICP 등록번호, 저작권 고지와 동일하지만 https://beian.miit.gov.cn/로 링크됨
+  copyright: # 저작권 고지, 등록번호 등, 커스텀 키값 가능, 표시하지 않으려면 비워둠
+    # 몽:
+    #   몽ICP备XXXXXXXX호: https://icp.gov.moe/?keyword=XXXXXXXX
+    # copyright:
+    #   CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh
+
+# 소셜 링크
+# 형식: 링크 || 아이콘
+# 사용 가능한 모든 아이콘: https://fontawesome.com/icons
+social:
+  # GitHub: https://github.com/yourname || fab fa-github
+  # E-Mail: mailto:yourname@gmail.com || fa fa-envelope
+  # BiliBili: https://space.bilibili.com/0000000 || fa-brands fa-bilibili
+  # Weibo: https://weibo.com/yourname || fab fa-weibo
+  # Zhihu: https://www.zhihu.com/people/yourname || fab fa-zhihu
+
+# post 글 페이지 설정; true / false
+post:
+  date: true # 게시일 표시 여부
+  updated: true # 수정일 표시 여부
+  excerpt: true # 글에 요약 내용 표시 여부（<!-- more--> 이상의 내용）
+  # 글 끝에 후원 QR코드 표시
+  reward:
+    # Alipay: img/Alipay.png
+    # Wechat: img/WeChat.png
+  # 아래 두 항목은 hexo-wordcount 필요, README 참고하여 활성화
+  count: false # 글자 수 통계 표시 여부
+  time: false # 예상 독서 시간 표시 여부
+
+# 글 내 목차
+toc:
+  list_number: true # true / false; 번호 표시 여부
+  max_depth: 6 # 최대 목차 깊이
+  min_depth: 1 # 최소 목차 깊이
+
+# 아카이브 페이지
+archives:
+  categories_count: true # 카테고리 총 수 표시 여부
+  tags_count: true # 태그 총 수 표시 여부
+
+# 검색
+search:
+  enable: true
+  content: true # false일 경우, 제목 및 metadata만 검색 가능
+  preload: false # 검색 데이터 자동 로드
+  # post로 설정 시, post 페이지만 검색 가능
+  # page로 설정 시, post가 아닌 페이지만 검색 가능
+  # all로 설정 시, 모든 페이지 검색 가능
+  field: post
+  # html로 설정 시, html 파일 기반 생성
+  # striptags로 설정 시, html 태그 제거 후 생성
+  # raw로 설정 시, markdown 원본 파일 기반 생성
+  format: striptags
+
+# 不蒜子
+# 상세: http://busuanzi.ibruce.info/
+busuanzi:
+  enable: false
+  sitePV: true # 사이트 총 방문자 수
+  siteUV: true # 사이트 방문자 수
+  pagePV: true # 페이지 방문자 수
+
+# Valine
+# 상세: https://valine.js.org
+valine:
+  enable: false
+  app_id: # APP ID
+  app_key: # APP KEY
+  server_url: # APP DOMAIN（LeanCloud 국제판）
+
+# gitalk
+# 상세: https://github.com/gitalk/gitalk
+gitalk:
+  enable: false
+  client_id: # GitHub 애플리케이션 Client ID
+  client_secret: # GitHub 애플리케이션 Client Secret
+  repo: # 댓글 데이터 저장할 GitHub 저장소
+  owner: # 해당 GitHub 저장소 소유자
+  admin: [] # 해당 GitHub 저장소에 대한 쓰기 권한이 있는 사용자, 예: [adminA,adminB]
+  id: location.pathname # (선택) 페이지의 고유 식별자
+
+# Waline
+# 상세: https://waline.js.org/
+waline:
+  enable: false
+  server_url: #Server_Url
+
+#Artalk
+#상세: https://artalk.js.org/
+artalk:
+  enable: false
+  server: https://artalk.server.instance/ # Artalk 서비스 주소
+  site_name: My Blog # 사이트 이름, 여러 사이트 구분 용도 (선택)
+
+# 차트 지원
+mermaid:
+  enable: true
+  version: "10.5.0"
+
+# pjax 지원
+pjax:
+  enable: true
+
+# 수식 프론트 렌더링
+mathjax:
+  enable: true
+  version: "2.6.1"
+
+# <head> 태그 내 CSS 스타일 시트 삽입
+stylesheets:
+
+# <body> 태그 끝에 JavaScript 스크립트 삽입
+scripts:
+
+

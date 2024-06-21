@@ -1,0 +1,51 @@
+name: Deploy Hexo to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # main 브랜치에 푸시될 때 실행
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+        token : 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
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Set up Git
+      run: |
+        git config --global user.name 'lap1acian'
+        git config --global user.email 'laplacian@tauon.io'
+    - name: Install Hexo CLI
+      run: npm install -g hexo-cli
+
+    - name: Generate static files
+      run: hexo generate
+
+    - name: Get current commit message
+      id: commitinfo
+      run: echo "::set-output name=message::$(git log -1 --pretty=%B)"
+
+    - name: Deploy to GitHub Pages
+      env:
+        GITHUB_TOKEN: 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
+      run: |
+        git checkout gh-pages
+        rsync -avhP public/ .deploy_git/
+        cd .deploy_git
+        
+        git add .
+        git commit -m "Deploy site: ${{ steps.commitinfo.outputs.message }}" || echo "No changes to commit"
+        git push
