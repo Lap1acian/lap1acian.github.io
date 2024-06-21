@@ -54,7 +54,7 @@ jobs:
       env:
         GITHUB_TOKEN: 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
       run: |
-        rsync -avh ./public/* /deploy
+        rsync -avh /build/public/* /deploy
         cd /deploy
         git add .
         git commit -m "Deploy site: ${{ steps.commitinfo.outputs.message }}" || echo "No changes to commit"
