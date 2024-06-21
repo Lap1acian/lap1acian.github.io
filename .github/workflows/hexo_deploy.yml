@@ -33,21 +33,20 @@ jobs:
 
     - name: Install dependencies
       run: |
-        ls -alh
-        cd build
-        ls -lah
         npm install
-
+        npm install -g hexo-cli
+        
+      working-directory: build
+      
     - name: Set up Git
       run: |
         git config --global user.name 'lap1acian'
         git config --global user.email 'laplacian@tauon.io'
-    - name: Install Hexo CLI
-      run: npm install -g hexo-cli
-
+        
     - name: Generate static files
       run: hexo generate
-
+      working-directory: build
+      
     - name: Get current commit message
       id: commitinfo
       run: echo "::set-output name=message::$(git log -1 --pretty=%B)"
@@ -57,7 +56,7 @@ jobs:
         GITHUB_TOKEN: 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
       run: |
         ls -alh
-        rsync -avh ./build/public/* ./deploy
+        rsync -avh --delete ./build/public ./deploy --exclude=".git"
         cd ./deploy
         git add .
         git commit -m "Deploy site: ${{ steps.commitinfo.outputs.message }}" || echo "No changes to commit"
