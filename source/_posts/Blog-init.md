@@ -5,5 +5,6 @@ date: 2024-06-22 02:52:37
 tags: 
 categories:
   - Announcement
+types:
 ---
 RHINE-LAB-KR
