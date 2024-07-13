@@ -126,6 +126,13 @@ artalk:
   server: https://artalk.server.instance/ # Artalk 서비스 주소
   site_name: My Blog # 사이트 이름, 여러 사이트 구분 용도 (선택)
 
+# disqus
+disqus:
+  enable: true
+  shortname: rhinelab-kr
+  count: true
+
+
 # 차트 지원
 mermaid:
   enable: true
@@ -133,7 +140,7 @@ mermaid:
 
 # pjax 지원
 pjax:
-  enable: true
+  enable: false
 
 # 수식 프론트 렌더링
 mathjax:

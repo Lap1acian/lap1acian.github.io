@@ -6,5 +6,6 @@ tags:
 categories:
   - Announcement
 types:
+comments: true
 ---
 RHINE-LAB-KR
