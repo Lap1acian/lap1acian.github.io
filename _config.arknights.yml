@@ -89,7 +89,7 @@ search:
 # 不蒜子
 # 상세: http://busuanzi.ibruce.info/
 busuanzi:
-  enable: false
+  enable: true
   sitePV: true # 사이트 총 방문자 수
   siteUV: true # 사이트 방문자 수
   pagePV: true # 페이지 방문자 수
