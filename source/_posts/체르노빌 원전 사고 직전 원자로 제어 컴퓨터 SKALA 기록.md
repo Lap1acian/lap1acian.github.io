@@ -8,4 +8,4 @@ tags:
   - subtitle_works
 comments: true
 ---
-https://www.youtube.com/watch?v=7JdR7hTK-64
+<iframe width="1188" height="668" src="https://www.youtube.com/embed/7JdR7hTK-64" title="체르노빌 발전소 사고 직전 SKALA 로그 [자막]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
