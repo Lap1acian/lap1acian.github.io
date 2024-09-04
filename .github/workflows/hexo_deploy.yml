@@ -15,7 +15,7 @@ jobs:
       with:
         path: build
         submodules: true
-        token : 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
+        token : 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
 
     
     - name: Checkout the deploy repository
@@ -23,7 +23,7 @@ jobs:
       with:
         path: deploy
         ref: gh-pages
-        token : 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
+        token : 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
 
         
     - name: Set up Node.js
@@ -56,7 +56,7 @@ jobs:
 
     - name: Deploy to GitHub Pages
       env:
-        GITHUB_TOKEN: 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
+        GITHUB_TOKEN: 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
       run: |
         ls -alh
         rsync -avh --delete ./build/public/ ./deploy/ --exclude=".git"
