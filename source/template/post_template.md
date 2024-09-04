@@ -1,7 +1,7 @@
 ---
 layout: posts
 title: {{title}}
-date: {{date}}
+date: {{date}} {{time}}
 categories: 
 tags:
 comments: True
