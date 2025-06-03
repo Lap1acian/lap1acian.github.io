@@ -8,7 +8,7 @@ tags:
 comments: True
 ---
 
-- 본 글에선 중성미자 입자 생성 시뮬레이션 프로그램 GENIE 의 설치 과정에 대해 기술한다.
+- 본 글에선 중성미자 입자 생성 시뮬레이션 프로그램 GENIE 의 설치 과정에 대해 기술한다. 맨 하단에 이 과정을 전부 실행하는 스크립트가 있으니 급하면 해당 스크립트를 사용하라.
 - 의존성 패키지를 많이 끌고오는 프로그램이므로 Ubuntu, GENIE, 의존성 패키지 셋의 버전에 따라서 해당 방법으로 설치가 되지 않을 수도 있다.
 - 사용된 ubuntu, GENIE, 의존성 패키지들의 버전은 다음과 같다.
 	- ubuntu : 24.04 or 22.04
@@ -23,11 +23,13 @@ comments: True
 2024/09/11/ docker container ubuntu 24.04 를 베이스로 한다.
 2024/09/12/ docker container ubuntu 22.04 에서 동작 확인
 
-# 1. Prerequisite apt install
+- 가능하면 **make install** 단계에서는 -j 옵션을 사용하지 마라
+
+# Prerequisite apt install
 
 apt 에서 설치해야 하는 항목
 
-## 1.1. 필수 설치
+## 필수 설치
 
 - binutils
 - cmake
@@ -51,7 +53,7 @@ apt 에서 설치해야 하는 항목
 - wget
 - xorg
 
-## 1.2. Integrated command
+## Integrated command
 
 ### apt 설치
 
@@ -65,15 +67,16 @@ apt install -y binutils cmake gcc gfortran git g++ libgif-dev libgsl-dev libnsl-
 ```shell
 locale-gen en_US.UTF-8
 ```
-# 2. Dependency 설치
 
-## 2.1. LIBXML2
+# Dependency 설치
+
+## LIBXML2
 
 apt 에서 설치됨. Section 1.1., 1.2. 참조
 
-## 2.2. LHAPDF - Version 6.5.4
+## LHAPDF - Version 6.5.4
 
-### 2.2.1. 내려받기 및 압축 해제
+### 내려받기 및 압축 해제
 
 ```shell
 cd /root
@@ -83,7 +86,7 @@ tar xvf LHAPDF-6.5.4.tar.gz
 cd /root/LHAPDF-6.5.4
 ```
 
-### 2.2.2. 빌드 및 정리
+### 빌드 및 정리
 
 - python 을 disable 하고 받아야 문제가 없다.
 
@@ -96,9 +99,8 @@ make install
 cd /root
 rm -rf LHAPDF*
 ```
-> [!danger]
-> do not use -j option on make install phase
-### 2.2.3. LHAPDF integrated command
+
+### LHAPDF integrated command
 
 ```shell
 cd /root && \
@@ -114,11 +116,10 @@ make install && \
 cd /root && \
 rm -rf LHAPDF*
 ```
-> [!danger]
-> do not use -j option on make install phase
-## 2.3. log4cpp - Version 1.1.5rc1
 
-### 2.3.1. 내려받기 및 압축 해제
+## log4cpp - Version 1.1.5rc1
+
+### 내려받기 및 압축 해제
 
 ```shell
 mkdir /root/log4cpp
@@ -128,7 +129,7 @@ wget 'https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x (new)/log4cpp
 tar -xvf log4cpp-1.1.5rc1.tar.gz -C /root/log4cpp_src --strip-components=2
 ```
 
-### 2.3.2. 빌드 및 정리
+### 빌드 및 정리
 
 ```shell
 cd log4cpp_src
@@ -138,9 +139,8 @@ make install
 cd /root
 rm -rf log4cpp_* log4cpp-*
 ```
-> [!danger]
-> do not use -j option on make install phase
-### 2.3.3. log4cpp integrated command
+
+### log4cpp integrated command
 
 ```shell
 mkdir /root/log4cpp && \
@@ -155,12 +155,10 @@ make install && \
 cd /root && \
 rm -rf log4cpp_* log4cpp-*
 ```
-> [!danger]
-> do not use -j option on make install phase
 
-## 2.4. PYTHIA6 - Version 6.4.28
+## PYTHIA6 - Version 6.4.28
 
-### 2.4.1. 내려받기 및 압축해제 및 전처리
+### 내려받기 및 압축해제 및 전처리
 
 Pythia6 의 경우, 빌드 시 dependency 가 되는 것을 담아놓은 pythia6 폴더와, 각 minor version  에 따른 실제 골자가 되는 .f 파일이 따로 배포된다.
 본 글에서 사용하는 pythia6 폴더에는 기본적으로 6.4.16 의 .f 파일이 들어가 있는데, 이를 pythia6 의 최종 패치 버전인 6.4.28 의 .f 파일을 사용할 것이다. Root 만 설치할 경우, Pythia6 은 필요하지 않고 심지어는 현행 Root 버전에선 removal 되어 사용하지 않는 것이 옳다.
@@ -193,7 +191,7 @@ sed -i '52,60s/^/extern /;62s/^/extern /;64,65s/^/extern /;69s/^/extern /;72s/^/
 
 ![](/attachment/img/pythia6_mod.png)
 
-### 2.4.2. 빌드 및 정리
+### 빌드 및 정리
 
 ```shell
 ./makePythia6.linuxx8664 -j N  # N 은 장비의 스레드 개수
@@ -202,7 +200,7 @@ cd /root
 rm pythia6.tar.gz
 ```
 
-### 2.4.3. PYTHIA6 integrated command
+### PYTHIA6 integrated command
 
 ```shell
 wget https://root.cern.ch/download/pythia6.tar.gz && \
@@ -217,11 +215,11 @@ cd /root && \
 rm pythia6.tar.gz
 ```
 
-## 2.5. PYTHIA8 - Version 8.3.12 (option for root)
+## PYTHIA8 - Version 8.3.12 (option for root)
 
 Pythia8 은 root 에만 들어가는 옵션이고, GENIE 에서도 Pythia8 을 옵션으로 달 수 있지만 현재는 에러를 해결하지 못해서 GENIE 에서 enable 옵션은 사용하지 않았다.
 
-### 2.5.1. 내려받기 및 압축해제
+### 내려받기 및 압축해제
 
 ```shell
 wget https://www.pythia.org/download/pythia83/pythia8312.tgz
@@ -230,7 +228,7 @@ tar xvf pythia8312.tgz
 cd /root/pythia8312
 ```
 
-### 2.5.2. 빌드 및 정리
+### 빌드 및 정리
 
 ```shell
 ./configure --prefix=/root/pythia8
@@ -239,10 +237,8 @@ make install
 cd /root
 rm -rf pythia8312*
 ```
-> [!danger]
-> do not use -j option on make install phase
 
-### 2.5.3. PYTHIA8 integrated command
+### PYTHIA8 integrated command
 
 ```shell
 wget https://www.pythia.org/download/pythia83/pythia8312.tgz && \
@@ -255,12 +251,10 @@ make install && \
 cd /root && \
 rm -rf pythia8312*
 ```
-> [!danger]
-> do not use -j option on make install phase
 
-## 2.6. GSL - Version 2.8
+## GSL - Version 2.8
 
-### 2.6.1. 내려받기 및 압축 해제
+### 내려받기 및 압축 해제
 
 ```shell
 mkdir /root/gsl
@@ -269,7 +263,7 @@ tar xvf gsl-latest.tar.gz
 cd /root/gsl-2.8
 ```
 
-### 2.6.2. 빌드 및 정리
+### 빌드 및 정리
 
 ```shell
 ./configure --prefix=/root/gsl
@@ -278,10 +272,8 @@ make install
 cd /root
 rm -rf gsl-2.8 gsl-latest.tar.gz
 ```
-> [!danger]
-> do not use -j option on make install phase
 
-### 2.6.3. GSL integrated command
+### GSL integrated command
 
 ```shell
 mkdir /root/gsl && \
@@ -294,16 +286,14 @@ make install && \
 cd /root && \
 rm -rf gsl-2.8 gsl-latest.tar.gz
 ```
-> [!danger]
-> do not use -j option on make install phase
 
-## 2.7 ROOT - Version 6.30.08
+## ROOT - Version 6.30.08
 
 GENIE 는 pythia6 의존성이 필요한데, 특히 root 에서 EGPythia6 를 불러오는데 이를 ROOT 최신버전에선 지원하지 아니함.
 ROOT 에서 PYTHIA6 가 deprecate 되는 시점이 6.30, 완전히 removal 되는 시점이 6.32 이다.
 따라서 2024/09/11 기준 PYTHIA6 를 지원하며 가장 최근까지 패치가 진행되었던 ROOT 6.30.08 버전을 사용한다.
 
-### 2.7.1. 내려받기, 압축 해제 및 디렉토리 준비
+### 내려받기, 압축 해제 및 디렉토리 준비
 
 ```shell
 cd /root
@@ -314,7 +304,7 @@ git checkout v6-30-08
 cd /root/root_build
 ```
 
-### 2.7.2. 빌드 및 정리
+### 빌드 및 정리
 
 ```shell
 cmake \
@@ -336,7 +326,7 @@ source thisroot.sh
 cd /root
 ```
 
-### 2.7.3. ROOT Integrated command
+### ROOT Integrated command
 
 ```shell
 cd /root && \
@@ -365,14 +355,14 @@ source thisroot.sh && \
 cd /root
 ```
 
-# 3. GENIE - Version 3.04.02
+# GENIE - Version 3.04.02
 
 1 과 2 에서 GENIE 설치에 요구되는 요구사항을 전부 설치하였으며
 이 단계에서는 본인의 연구에 필요한 최소한의 요소로 변수를 제거하고 설치하였음을 미리 밝히는 바이다.
 앞서 설치한 요구사항을 GENIE 에서 제대로 인식하기 위해서 환경변수를 설정해 주어야 하는데
 상기 단계를 그대로 따라왔다면 3.1. 의 echo 로 시작하는 명령줄이 이를 자동으로 진행해 줄 것이다.
 
-## 3.1. 내려받기, 압축 해제 환경 변수 설정
+## 내려받기, 압축 해제 환경 변수 설정
 
 ```shell
 mkdir /root/GENIE
@@ -383,7 +373,7 @@ echo -e 'export GENIE=/root/GENIE_Generator\nexport ROOTSYS=/root/root_install\n
 source /root/.zshrc
 ```
 
-## 3.2. 빌드 및 정리
+## 빌드 및 정리
 
 ```shell
 ./configure \
@@ -402,10 +392,8 @@ source /root/.zshrc
 make -j N # N 은 장비의 스레드 수
 make install
 ```
-> [!danger]
-> do not use -j option on make install phase
 
-## 3.3. GENIE integrated command
+## GENIE integrated command
 
 ```shell
 mkdir /root/GENIE && \
@@ -433,12 +421,12 @@ source /root/.zshrc && \
 make -j 100 && \
 make install
 ```
-> [!danger]
-> do not use -j option on make install phase
 
 # test
 
 gevgen_hadron -n 10000 -p 211 -t 1000080160 -k 0.2 --seed 9839389
+
+# test 를 제외한 위 모든 과정을 한 번에 실행하는 코드
 
 ```shell
 cd /root && \
