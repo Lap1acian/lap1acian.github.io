@@ -158,7 +158,7 @@
         <div class="flex space-x-6 text-xs md:text-sm">
             <span id="clock">00:00:00:00</span>
             <span class="hidden md:inline text-sci-cyan">SYS.STATUS: NORMAL</span>
-            <span class="hidden md:inline">LOC: DAEJEON</span>
+            <span class="hidden md:inline">LOC: TRIMOUNTS</span>
         </div>
     </header>
 
@@ -385,10 +385,16 @@
             }, 200);
         }
 
-        // Clock
+        // Clock (KST - Seoul GMT+09:00)
         setInterval(() => {
             const now = new Date();
-            const timeStr = now.toISOString().split('T')[1].replace('Z','');
+            const timeStr = now.toLocaleTimeString('en-GB', {
+                timeZone: 'Asia/Seoul',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                fractionalSecondDigits: 2
+            });
             document.getElementById('clock').innerText = "SYS.TIME: " + timeStr;
         }, 100);
 
