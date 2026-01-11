@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PVE 9.0.11 환경에서 nvidia 드라이버 설치 및 lxc 에 gpu 공유 설정 | RHINE-LAB-KR</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('/img/D_BG.png');
+ --light-background: url('/img/L_BG.png');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});</script><!-- Google tag (gtag.js)--><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Z4EXFD5PT4"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Z4EXFD5PT4');
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {reset()})</script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {reset()})</script><meta name="generator" content="Hexo 7.2.0"></head><body><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>PVE 9.0.11 환경에서 nvidia 드라이버 설치 및 lxc 에 gpu 공유 설정</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-07-24T01:05:52.000Z" id="date"> 2024-07-24</time></div></span><br><span>Last Update: <div class="control"><time datetime="2026-01-11T13:32:17.115Z" id="updated"> 2026-01-11</time></div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><h1 id="PVE-9-0-11-환경에서-nvidia-삽질기"><a href="#PVE-9-0-11-환경에서-nvidia-삽질기" class="headerlink" title="PVE 9.0.11 환경에서 nvidia 삽질기"></a>PVE 9.0.11 환경에서 nvidia 삽질기</h1><p>참고 문헌</p>
+<p>Proxmox LXC에 Nvidia GPU 패스쓰루: <a target="_blank" rel="noopener" href="https://svrforum.com/os/503310">https://svrforum.com/os/503310</a></p>
+<p>예전에 이 글을 보고 따라간 적이 있었는데 몇몇 부분에서 보충이 필요한 부분이 있어 찾아가면서 했던 경험이 있다. 당시에 글로 남길까 했는데 그 때는 일단 진행해놓고 보자는 생각으로 지나왔더니 까먹고 글을 안 썼더랬다. 그 때의 업보인가 똑같은 짓을 다시 할 필요가 생겨서 이번에는 두 번 실수하지 않으리라 결심하고 글을 쓴다. </p>
+<p>버전 목록<br>PVE 9.0.11<br>NVIDIA 드라이버 버전 : NVIDIA-Linux-x86_64-580.105.08</p>
+<h1 id="0-사전-설정"><a href="#0-사전-설정" class="headerlink" title="0. 사전 설정"></a>0. 사전 설정</h1><p>proxmox 를 처음 설치한 경우, enterprise repository 가 기본 레포지토리로 설정되어있다.<br>이 때 apt update 를 수행하면 우리는 enterprise repository 가 구독되어 있지 않으므로 일부 레포지토리를 불러오지 못한다.<br>따라서 이 문제를 해결하려면 repository 를 no subcription repository 로 수정해 주어야 한다.<br>이는 pve(proxmox virtual environment) 의 커널을 최신 버전으로 업데이트하고 nvidia driver 설치를 진행하게 되는데 이를 위해선 proxmox 쪽 repository 를 올바르게 불러와야하기 때문이다.<br>이 문제를 해결한 사용자는 다음 섹션으로 바로 넘어가도 좋다.</p>
+<p>pve.proxmox.com/wiki 의 package repositories 항목에서 <a target="_blank" rel="noopener" href="https://pve.proxmox.com/wiki/Package_Repositories#sysadmin_no_subscription_repo">no subcription repository</a> 항목에 들어가보면 apt 에서 불러오는 repository 의 수정 방법이 적혀 있다. pve 9.0.11 버전 외에서의 설정 방법은 위 링크를 참조하도록 하자.</p>
+<p class='item-img' data-src='/attachment/img/9_fig1.png'><img src="/attachment/img/9_fig1.png" alt="fig1"></p>
+<p>나는 nano 보다 vim 이 편해서 일단 apt update 로 업데이트 한 번 하고 (proxmox enterprise repo 를 못 불러오는거지 다른 repo 는 불러올 수 있다.) vim 깔아서 다음 두 파일을 수정했다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">/etc/apt/source.list.d/proxmox.sources<br>/etc/apt/source.list.d/ceph.sources<br></code></pre></td></tr></table></figure>
+<p>proxmox.sources 의 경우 원래 파일 이름이 proxmox-enterprise.sources 이렇게 되어있을 수 있는데 mv 로 이름 바꾸고 수정해도 문제 없다.</p>
+<p>9.0.11 버전 기준으로 proxmox.sources 의 파일 내용은 다음과 같을 것인데</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">Types: deb<br>URIs: https://enterprise.proxmox.com/debian/pve<br>Suites: trixie<br>Components: pve-enterprise<br>Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg<br></code></pre></td></tr></table></figure>
+<p>원 파일 내용을 주석처리하고 다음과 같이 저장하고 나오도록 하자.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">Types: deb</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">URIs: https://enterprise.proxmox.com/debian/pve</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Suites: trixie</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Components: pve-enterprise</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg</span><br><br>Types: deb<br>URIs: http://download.proxmox.com/debian/pve<br>Suites: trixie<br>Components: pve-no-subscription<br>Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg<br></code></pre></td></tr></table></figure>
+<p>ceph.sources 도 마찬가지로</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">Types: deb<br>URIs: https://enterprise.proxmox.com/debian/ceph-squid<br>Suites: trixie<br>Components: enterprise<br>Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg<br></code></pre></td></tr></table></figure>
+<p>이런 내용일텐데</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">Types: deb</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">URIs: https://enterprise.proxmox.com/debian/ceph-squid</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Suites: trixie</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Components: enterprise</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg</span><br><br>Types: deb<br>URIs: http://download.proxmox.com/debian/ceph-squid<br>Suites: trixie<br>Components: no-subscription<br>Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg<br></code></pre></td></tr></table></figure>
+<p>이렇게 바꿔주도록 하자.<br>이후 apt update 를 수행하면 pve 쪽 repository 도 잘 불러올 것이다.</p>
+<h1 id="1-proxmox-커널-버전-확인-및-업데이트"><a href="#1-proxmox-커널-버전-확인-및-업데이트" class="headerlink" title="1. proxmox 커널 버전 확인 및 업데이트"></a>1. proxmox 커널 버전 확인 및 업데이트</h1><p>pve 의 쉘에서 다음을 통해 pve 커널의 버전을 확인한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">uname -r<br></code></pre></td></tr></table></figure>
+<p>![fig2][/attachment/img/9_fig2.png]</p>
+<p>내 경우는 6.14.11-4 버전이다.<br>최신 버전의 커널인지 확인하기 위해 다음을 수행한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">apt-cache search pve-header<br></code></pre></td></tr></table></figure>
+<p>![fig3][/attachment/img/9_fig3.png]</p>
+<p>최신 버전의 커널을 찾아 apt install 로 설치해준다. 내 경우는 6.17.2-1-pve 일 것이다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">apt install proxmox-headers-xxx-pve<br></code></pre></td></tr></table></figure>
+<h1 id="2-pve-쉘에서-GPU-드라이버-블랙리스트-설정"><a href="#2-pve-쉘에서-GPU-드라이버-블랙리스트-설정" class="headerlink" title="2. pve 쉘에서 GPU 드라이버 블랙리스트 설정"></a>2. pve 쉘에서 GPU 드라이버 블랙리스트 설정</h1><p>설치가 완료되면  다음은 nvidia 드라이버를 설치해야 하는데 그 전에 proxmox 쉘에서 GPU 를 쓰면 곤란하니 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/etc/modprobe.d/blacklist.conf<br></code></pre></td></tr></table></figure>
+<p>파일을 vim 으로 열어서</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">blacklist nouveau<br></code></pre></td></tr></table></figure>
+<p>를 입력한 후 저장한 뒤 다음 명령어로 초기 램 파일 시스템을 업데이트하고 재부팅한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">update-initramfs -u<br>reboot<br></code></pre></td></tr></table></figure>
+<h1 id="3-signing-을-위한-key-pair-생성"><a href="#3-signing-을-위한-key-pair-생성" class="headerlink" title="3. signing 을 위한 key-pair 생성"></a>3. signing 을 위한 key-pair 생성</h1><p>이 부분은 4. 를 시도해보고</p>
+<p>![fig8][/attachment/img/9_fig8.png]</p>
+<p>이러한 문구가 뜨는 경우 필요할 수 있다. (뜨지 않는다면 스킵해도 무방하다.)</p>
+<p>서버 환경에서 UEFI secure boot 가 설정되어 있다면 드라이버 설치 중 커널 모듈에 signing 을 강제하는 경우가 있다. secure boot 를 끄면 install without signing 을 선택할 수 있으리라 생각된다. 내 경우는 그럴 상황은 못 되니 key-pair 를 생성해서 signing 을 진행할 것이다.</p>
+<h1 id="4-Nvidia-드라이버-설치"><a href="#4-Nvidia-드라이버-설치" class="headerlink" title="4. Nvidia 드라이버 설치"></a>4. Nvidia 드라이버 설치</h1><p>드라이버 빌드를 위한 기본 build-essential 을 apt 로 설치한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">apt install build-essential<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.nvidia.com/Download/index.aspx">nvidia 드라이버 다운로드 사이트</a> 에서 본인의 gpu 모델에 맞는 드라이버를 찾는다.</p>
+<p>![fig4][/attachment/img/9_fig4.png]</p>
+<p>Find 를 누르면 최신 버전의 드라이버가 뜨는데 거기서 view  를 누르면</p>
+<p>![fig5][/attachment/img/9_fig5.png]</p>
+<p>이렇게 다운로드 링크가 나오는데 저걸 바로 받는 것이 아니고 오른쪽 마우스 버튼을 눌러 링크를 복사한 뒤 쉘로 돌아가 wget 으로 pve 에 받는다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget 복사한_링크<br></code></pre></td></tr></table></figure>
+<p>받은 파일에 실행 권한을 주기 위해 다음 명령어를 입력한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod +x 받은_파일_이름<br></code></pre></td></tr></table></figure>
+<p>이후 설치를 위해 ./받은<em>파일</em>이름 명령을 입력해주면 되는데 내 환경에서는 kernel_path 를 지정해주지 않으면 드라이버 설치 파일이 커널을 못잡는 오류가 있었다. 따라서 —kernel-source-path 옵션을 주어야 한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./받은_파일_이름 --kernel-source-path=/usr/src/linux-headers-x.xx.x-x.pve<br></code></pre></td></tr></table></figure>
+<p>내 경우엔 앞에 apt 로 설치한 kernel 이 저 위치에 있었다.</p>
+<p>![fig5][/attachment/img/9_fig6.png]</p>
+<p>MIT/GPL 선택 후 </p>
+<p>![fig5][/attachment/img/9_fig7.png]</p>
+<p>Kernel module 을 빌드한다</p>
+<p>![fig5][/attachment/img/9_fig9.png]</p>
+<p>X 를 쓰겠냐는 말인데 여기선 no 를 선택한다.</p>
+<p>설치가 완료되었다는 박스가 뜨면 nvidia-smi 명령어를 통해 gpu 가 제대로 설치되었는지 확인할 수 있다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nvidia-smi<br></code></pre></td></tr></table></figure>
+<p>![fig5][/attachment/img/9_fig10.png]<br>이렇게 설치된 gpu 의 정보가 나오면 성공이다.</p>
+<p>이제 proxmox  가 시작될 때 nvidia 관련 드라이버가 실행되기 위해 필요한 작업으로, nvidia 관련 드라이버들을 모듈에 추가한다. 다음 파일을 vim 으로 연다</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/etc/modules-load.d/modules.conf<br></code></pre></td></tr></table></figure>
+<p>파일에 다음 줄들을 추가한다</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">nvidia  <br>nvidia-modeset  <br>nvidia_uvm<br></code></pre></td></tr></table></figure>
+<p>![fig5][/attachment/img/9_fig11.png]</p>
+<p>이런 꼴이 될 것이다.<br>initramfs 를 다시 한 번 업데이트한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">update-initramfs -u<br></code></pre></td></tr></table></figure>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/09/04/%EC%98%81%EC%9E%A5%20%EC%B9%B4%EB%82%98%EB%A6%AC%EC%95%84%20(Warrant%20Canary)/">← Next 영장 카나리아 (Warrant Canary)</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/07/24/%EC%B2%B4%EB%A5%B4%EB%85%B8%EB%B9%8C%20%EC%9B%90%EC%A0%84%20%EC%82%AC%EA%B3%A0%20%EC%A7%81%EC%A0%84%20%EC%9B%90%EC%9E%90%EB%A1%9C%20%EC%A0%9C%EC%96%B4%20%EC%BB%B4%ED%93%A8%ED%84%B0%20SKALA%20%EA%B8%B0%EB%A1%9D/">체르노빌 원전 사고 직전 원자로 제어 컴퓨터 SKALA 기록 Prev →</a></div></div></div><div id="comments"><div id="disqus_thread"></div><script>/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://rhinelab-kr.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();</script><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/4.png" alt="Logo"></a><h1 id="Dr"><a>laplacian</a></h1><div id="description"><p>Research in High energy Interactions, Neutrino and Early-universe cosmology LABoratory </p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PVE-9-0-11-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-nvidia-%EC%82%BD%EC%A7%88%EA%B8%B0"><span class="toc-number">1.</span> <span class="toc-text">PVE 9.0.11 환경에서 nvidia 삽질기</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0-%EC%82%AC%EC%A0%84-%EC%84%A4%EC%A0%95"><span class="toc-number">2.</span> <span class="toc-text">0. 사전 설정</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-proxmox-%EC%BB%A4%EB%84%90-%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8-%EB%B0%8F-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8"><span class="toc-number">3.</span> <span class="toc-text">1. proxmox 커널 버전 확인 및 업데이트</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-pve-%EC%89%98%EC%97%90%EC%84%9C-GPU-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EB%B8%94%EB%9E%99%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EC%84%A4%EC%A0%95"><span class="toc-number">4.</span> <span class="toc-text">2. pve 쉘에서 GPU 드라이버 블랙리스트 설정</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-signing-%EC%9D%84-%EC%9C%84%ED%95%9C-key-pair-%EC%83%9D%EC%84%B1"><span class="toc-number">5.</span> <span class="toc-text">3. signing 을 위한 key-pair 생성</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Nvidia-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EC%84%A4%EC%B9%98"><span class="toc-number">6.</span> <span class="toc-text">4. Nvidia 드라이버 설치</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

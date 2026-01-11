@@ -1,0 +1,638 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>RHINE-LAB-KR</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('/img/D_BG.png');
+ --light-background: url('/img/L_BG.png');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});</script><!-- Google tag (gtag.js)--><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Z4EXFD5PT4"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Z4EXFD5PT4');
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {reset()})</script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {reset()})</script><meta name="generator" content="Hexo 7.2.0"></head><body><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1></h1></div><hr><div id="post-content"><!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEY :: TACTICAL BEAN ANALYSIS</title>
+    
+    <!-- Google Fonts: Sci-fi Style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sci-base': '#0a0a0c',
+                        'sci-orange': '#ff9000',
+                        'sci-red': '#ff2a2a',
+                        'sci-cyan': '#00f0ff',
+                        'sci-dim': 'rgba(255, 144, 0, 0.2)',
+                    },
+                    fontFamily: {
+                        'mono': ['"Share Tech Mono"', 'monospace'],
+                        'sans': ['"Rajdhani"', 'sans-serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 20s linear infinite',
+                        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scan': 'scan 4s linear infinite',
+                        'flash': 'flash 0.5s',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100%)' }
+                        },
+                        flash: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.3' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #ff9000;
+            overflow: hidden; /* Prevent native scroll, handle internally */
+        }
+
+        /* CRT Scanline Effect */
+        .crt::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 50;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .crt::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(18, 16, 16, 0.1);
+            opacity: 0;
+            z-index: 50;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.027906; }
+            5% { opacity: 0.048532; }
+            10% { opacity: 0.016301; }
+            15% { opacity: 0.052502; }
+            20% { opacity: 0.013973; }
+            25% { opacity: 0.051381; }
+            30% { opacity: 0.016358; }
+            35% { opacity: 0.005187; }
+            40% { opacity: 0.026732; }
+            45% { opacity: 0.053721; }
+            50% { opacity: 0.032619; }
+            55% { opacity: 0.016166; }
+            60% { opacity: 0.046313; }
+            65% { opacity: 0.034789; }
+            70% { opacity: 0.038595; }
+            75% { opacity: 0.005574; }
+            80% { opacity: 0.03463; }
+            85% { opacity: 0.00494; }
+            90% { opacity: 0.038161; }
+            95% { opacity: 0.048384; }
+            100% { opacity: 0.04018; }
+        }
+
+        /* Custom Scrollbar for list */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff9000; 
+        }
+
+        /* Clip Paths for "Tech" look */
+        .clip-corner {
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+        .clip-hex {
+            clip-path: polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
+        }
+
+        .glitch-text:hover {
+            text-shadow: 2px 0 #ff2a2a, -2px 0 #00f0ff;
+        }
+
+        /* Grid Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 144, 0, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 144, 0, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="crt font-mono h-screen w-screen flex flex-col overflow-hidden bg-sci-base text-sci-orange selection:bg-sci-orange selection:text-black">
+
+    <!-- Top Status Bar -->
+    <header class="h-12 border-b border-sci-orange flex items-center justify-between px-4 bg-black/80 z-40 shrink-0">
+        <div class="flex items-center space-x-4">
+            <div class="w-3 h-3 bg-sci-red animate-pulse rounded-full"></div>
+            <h1 class="text-xl font-bold tracking-widest glitch-text">SEY :: COFFEE_DATA_LINK</h1>
+        </div>
+        <div class="flex space-x-6 text-xs md:text-sm">
+            <span id="clock">00:00:00:00</span>
+            <span class="hidden md:inline text-sci-cyan">SYS.STATUS: NORMAL</span>
+            <span class="hidden md:inline">LOC: DAEJEON</span>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex overflow-hidden relative">
+        
+        <!-- Background Grid & 3D Canvas -->
+        <div class="absolute inset-0 bg-grid z-0 pointer-events-none"></div>
+        <div id="canvas-container" class="absolute inset-0 z-0 opacity-40"></div>
+
+        <!-- Left Sidebar: Selection Module -->
+        <aside class="w-1/3 md:w-1/4 lg:w-1/5 border-r border-sci-orange bg-black/60 backdrop-blur-sm z-10 flex flex-col h-full">
+            <div class="p-2 border-b border-sci-orange bg-sci-orange/10">
+                <h2 class="text-xs font-bold mb-1">> SELECT_SUBJECT</h2>
+                <div class="w-full h-1 bg-sci-orange/30">
+                    <div class="h-full bg-sci-orange w-1/3 animate-scan"></div>
+                </div>
+            </div>
+            
+            <ul id="bean-list" class="flex-1 overflow-y-auto p-2 space-y-2">
+                <!-- List items injected by JS -->
+            </ul>
+
+            <div class="p-2 border-t border-sci-orange text-[10px] text-sci-cyan">
+                <p>> SCANNING_FREQ: 24.5Hz</p>
+                <p>> MEMORY: 64TB [OK]</p>
+            </div>
+        </aside>
+
+        <!-- Center: Data Display -->
+        <section class="flex-1 flex flex-col relative z-20 p-4 md:p-8 overflow-y-auto">
+            
+            <!-- Header Info -->
+            <div class="flex justify-between items-end border-b-2 border-sci-orange pb-4 mb-6">
+                <div>
+                    <div class="text-sci-cyan text-xs mb-1 tracking-widest">> TARGET_IDENTIFIED</div>
+                    <h2 id="bean-name" class="text-4xl md:text-6xl font-sans font-bold uppercase tracking-tighter text-white drop-shadow-[0_0_10px_rgba(255,144,0,0.8)]">
+                        INITIALIZING...
+                    </h2>
+                </div>
+                <div class="text-right hidden md:block">
+                    <div class="text-6xl font-bold opacity-30">01</div>
+                </div>
+            </div>
+
+            <!-- Main Data Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1: Origin Data -->
+                <div class="clip-corner border border-sci-orange bg-black/80 p-4 relative group hover:bg-sci-orange/5 transition-colors">
+                    <div class="absolute top-0 right-0 p-1">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-sci-cyan"></i>
+                    </div>
+                    <h3 class="text-xs text-sci-orange/70 mb-2">> ORIGIN_COORDINATES</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <span class="text-[10px] block text-sci-cyan">REGION</span>
+                            <span id="bean-region" class="text-lg font-bold">---</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] block text-sci-cyan">ALTITUDE</span>
+                            <span id="bean-altitude" class="text-lg font-bold">---</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Biological Data -->
+                <div class="clip-corner border border-sci-orange bg-black/80 p-4 relative hover:bg-sci-orange/5 transition-colors">
+                     <div class="absolute top-0 right-0 p-1">
+                        <i data-lucide="dna" class="w-4 h-4 text-sci-cyan"></i>
+                    </div>
+                    <h3 class="text-xs text-sci-orange/70 mb-2">> BIO_ANALYSIS</h3>
+                     <div class="space-y-2">
+                        <div>
+                            <span class="text-[10px] block text-sci-cyan">VARIETY</span>
+                            <span id="bean-variety" class="text-lg font-bold">---</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] block text-sci-cyan">PROCESS</span>
+                            <span id="bean-process" class="text-lg font-bold">---</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Market Value -->
+                <div class="clip-corner border border-sci-orange bg-black/80 p-4 relative hover:bg-sci-orange/5 transition-colors">
+                     <div class="absolute top-0 right-0 p-1">
+                        <i data-lucide="dollar-sign" class="w-4 h-4 text-sci-cyan"></i>
+                    </div>
+                    <h3 class="text-xs text-sci-orange/70 mb-2">> MARKET_VALUE (DDP)</h3>
+                    <div class="flex items-center h-full">
+                        <span id="bean-price" class="text-3xl font-bold text-white drop-shadow-md">---</span>
+                    </div>
+                </div>
+
+                <!-- Wide Card: Flavor Profile (Spectrum) -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-3 border-t border-b border-sci-orange py-6 bg-black/40 backdrop-blur-md">
+                    <h3 class="text-xs text-sci-cyan mb-4 flex items-center gap-2">
+                        <i data-lucide="activity" class="w-4 h-4"></i>
+                        > SENSORY_PROFILE_DECODED
+                    </h3>
+                    <div id="flavor-container" class="flex flex-wrap gap-3">
+                        <!-- Flavor tags injected here -->
+                    </div>
+                </div>
+
+                 <!-- Description -->
+                 <div class="col-span-1 md:col-span-2 lg:col-span-3 mt-4">
+                    <div class="border-l-2 border-sci-orange pl-4">
+                        <p id="bean-description" class="text-sm md:text-base leading-relaxed text-gray-300 font-sans max-w-3xl">
+                            AWAITING INPUT...
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Decorative Right Sidebar (Desktop) -->
+        <div class="hidden lg:flex flex-col justify-between w-16 border-l border-sci-orange bg-black/90 z-10 py-4 items-center">
+            <div class="writing-vertical-rl text-xs tracking-[0.3em] text-sci-dim">WARNING: CAFFEINE CONTENT HIGH</div>
+            <div class="flex flex-col gap-4">
+                <div class="w-2 h-16 bg-sci-orange/20 relative overflow-hidden">
+                    <div class="absolute bottom-0 w-full bg-sci-orange animate-[scan_2s_ease-in-out_infinite]" style="height: 60%"></div>
+                </div>
+                <div class="w-2 h-16 bg-sci-cyan/20 relative overflow-hidden">
+                    <div class="absolute bottom-0 w-full bg-sci-cyan animate-[scan_3s_ease-in-out_infinite]" style="height: 40%"></div>
+                </div>
+            </div>
+            <div class="text-[10px]">V.2.0</div>
+        </div>
+
+    </main>
+
+    <script>
+        // --- DATA SOURCE ---
+        const coffeeData = [
+            {
+                id: 'c01',
+                name: 'Harmufo',
+                region: 'Gedeb, Ethiopia',
+                variety: 'Ethiopian Landrace',
+                process: 'Honey',
+                altitude: '2,300 - 2,400 masl',
+                harvest: 'Jan 2025',
+                notes: ['Lemon candy', 'Ripe berries', 'Honeydew'],
+                price: '$17.61/KG',
+                desc: '에티오피아 게뎁(Gedeb) 지역의 고지대에서 생산된 커피. 기존 지역 블렌드와 달리 별도 로트로 분리된 희귀 셀렉션. 36시간 수중 발효 후 10-14일간 건조.'
+            },
+            {
+                id: 'c02',
+                name: 'Leonel Oviedo',
+                region: 'Palermo, Huila',
+                variety: 'Pink Bourbon',
+                process: 'Washed',
+                altitude: '1,700 masl',
+                harvest: 'Aug 2025',
+                notes: ['Blueberry', 'Tangerine', 'Cane sugar'],
+                price: '$17.03/KG',
+                desc: '콜롬비아 우일라의 새로운 생산자 레오넬 오비에도. 핑크 버본 품종의 잠재력을 극대화한 워시드 가공 커피. 36시간 건조 발효.'
+            },
+            {
+                id: 'c03',
+                name: 'Gerbota',
+                region: 'Yirgacheffe, Ethiopia',
+                variety: 'Ethiopian Landrace',
+                process: 'Washed',
+                altitude: '2,100 masl',
+                harvest: 'Jan 2025',
+                notes: ['Nectarine', 'Bergamot', 'Wildflower honey'],
+                price: '$16.54/KG',
+                desc: '에티오피아 예가체프 게데오 고지대의 게르보타 사이트 첫 릴리스. 선명한 클라리티와 지역 특유의 캐릭터가 돋보임.'
+            },
+            {
+                id: 'c04',
+                name: 'Flor M. Betancourt',
+                region: 'Palestina, Huila',
+                variety: 'Pink Bourbon',
+                process: 'Washed',
+                altitude: '1,750 masl',
+                harvest: 'Aug 2025',
+                notes: ['Lemon candy', 'Strawberry', 'Oolong'],
+                price: '$17.74/KG',
+                desc: '우일라 지역 2세대 생산자 플로르 마리나 베탄코트의 핑크 버본. 12시간 체리 숙성 후 40시간 건조 발효를 거친 복합적인 풍미.'
+            },
+            {
+                id: 'c05',
+                name: 'Benti Nenka',
+                region: 'Guji, Ethiopia',
+                variety: 'Ethiopian Landrace',
+                process: 'Washed',
+                altitude: '1,925 - 2,110 masl',
+                harvest: 'Jan 2025',
+                notes: ['Ripe peach', 'Star fruit', 'Melon'],
+                price: '$13.74/KG',
+                desc: '구지 지역 함벨라 와메나의 구두바 웻밀 생산. 589명의 소규모 농부가 참여. 베르가못 같은 산미와 깨끗한 과일 노트.'
+            },
+            {
+                id: 'c06',
+                name: 'Dogo Sodu',
+                region: 'Guji, Ethiopia',
+                variety: 'Ethiopian Landrace',
+                process: 'Washed',
+                altitude: '2,200 masl',
+                harvest: 'Jan 2025',
+                notes: ['Lemongrass', 'Ripe stone fruit', 'Honey'],
+                price: '$14.68/KG',
+                desc: '구지 지역 시즌 마지막 셀렉션. 기후 변화 속에서도 뛰어난 품질을 유지한 구지 특유의 복합적이고 독특한 프로필.'
+            }
+        ];
+
+        // --- UI LOGIC ---
+        const beanList = document.getElementById('bean-list');
+        let currentBeanIndex = 0;
+
+        // Typewriter Effect Function
+        function typeWriter(element, text, speed = 20) {
+            element.innerHTML = "";
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Render List
+        function renderList() {
+            beanList.innerHTML = '';
+            coffeeData.forEach((bean, index) => {
+                const li = document.createElement('li');
+                li.className = `cursor-pointer p-3 border-l-2 hover:bg-sci-orange/20 transition-all duration-200 group relative overflow-hidden ${
+                    index === currentBeanIndex 
+                    ? 'border-sci-orange bg-sci-orange/10 text-white' 
+                    : 'border-transparent text-gray-500'
+                }`;
+                li.innerHTML = `
+                    <div class="flex justify-between items-center relative z-10">
+                        <span class="font-bold text-sm tracking-wider group-hover:pl-2 transition-all">0${index+1} ${bean.name.toUpperCase()}</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </div>
+                    ${index === currentBeanIndex ? '<div class="absolute inset-0 bg-scan animate-scan opacity-10 pointer-events-none"></div>' : ''}
+                `;
+                li.onclick = () => selectBean(index);
+                beanList.appendChild(li);
+            });
+            lucide.createIcons();
+        }
+
+        // Select Bean Logic
+        function selectBean(index) {
+            currentBeanIndex = index;
+            renderList();
+            const bean = coffeeData[index];
+
+            // Update DOM with Glitch Effect
+            const nameEl = document.getElementById('bean-name');
+            nameEl.classList.add('opacity-50', 'blur-[2px]');
+            
+            setTimeout(() => {
+                nameEl.classList.remove('opacity-50', 'blur-[2px]');
+                nameEl.innerText = bean.name;
+                
+                document.getElementById('bean-region').innerText = bean.region;
+                document.getElementById('bean-altitude').innerText = bean.altitude;
+                document.getElementById('bean-variety').innerText = bean.variety;
+                document.getElementById('bean-process').innerText = bean.process;
+                document.getElementById('bean-price').innerText = bean.price;
+                
+                // Flavor Tags
+                const flavorContainer = document.getElementById('flavor-container');
+                flavorContainer.innerHTML = '';
+                bean.notes.forEach(note => {
+                    const tag = document.createElement('span');
+                    tag.className = 'px-3 py-1 border border-sci-cyan text-sci-cyan text-xs font-bold uppercase tracking-wider bg-sci-cyan/10 clip-corner hover:bg-sci-cyan hover:text-black transition-colors';
+                    tag.innerText = note;
+                    flavorContainer.appendChild(tag);
+                });
+
+                // Description with Typewriter
+                typeWriter(document.getElementById('bean-description'), bean.desc, 10);
+                
+                // Trigger 3D Model Reaction
+                if(mesh) {
+                    mesh.material.wireframeLinewidth = 5; // Flash effect
+                    mesh.rotation.x += 0.5;
+                    mesh.rotation.y += 0.5;
+                    setTimeout(() => mesh.material.wireframeLinewidth = 1, 200);
+                }
+
+            }, 200);
+        }
+
+        // Clock
+        setInterval(() => {
+            const now = new Date();
+            const timeStr = now.toISOString().split('T')[1].replace('Z','');
+            document.getElementById('clock').innerText = "SYS.TIME: " + timeStr;
+        }, 100);
+
+        // --- THREE.JS VISUALIZATION ---
+        let scene, camera, renderer, mesh, stars;
+
+        function initThree() {
+            const container = document.getElementById('canvas-container');
+            
+            scene = new THREE.Scene();
+            // No background color, transparent
+            
+            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.z = 2.5;
+
+            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
+
+            // Geometries
+            // 1. Central Wireframe Sphere (The Bean Data Core)
+            const geometry = new THREE.IcosahedronGeometry(1, 2);
+            const material = new THREE.MeshBasicMaterial({ 
+                color: 0xff9000, 
+                wireframe: true,
+                transparent: true,
+                opacity: 0.3
+            });
+            mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+
+            // 2. Inner Core
+            const coreGeo = new THREE.IcosahedronGeometry(0.5, 1);
+            const coreMat = new THREE.MeshBasicMaterial({
+                color: 0xff2a2a,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.5
+            });
+            const core = new THREE.Mesh(coreGeo, coreMat);
+            scene.add(core);
+
+            // 3. Orbiting Rings
+            const ringGeo = new THREE.TorusGeometry(1.4, 0.01, 16, 100);
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.2 });
+            const ring = new THREE.Mesh(ringGeo, ringMat);
+            ring.rotation.x = Math.PI / 2;
+            scene.add(ring);
+
+            // Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                mesh.rotation.x += 0.002;
+                mesh.rotation.y += 0.003;
+                
+                core.rotation.x -= 0.005;
+                core.rotation.y -= 0.005;
+
+                ring.rotation.x += 0.005;
+                ring.rotation.y += 0.002;
+
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Handle Resize
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        }
+
+        // Init
+        window.addEventListener('DOMContentLoaded', () => {
+            initThree();
+            renderList();
+            selectBean(0); // Select first by default
+            lucide.createIcons();
+        });
+
+    </script>
+</body>
+</html><div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="disqus_thread"></div><script>/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://rhinelab-kr.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();</script><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/4.png" alt="Logo"></a><h1 id="Dr"><a>laplacian</a></h1><div id="description"><p>Research in High energy Interactions, Neutrino and Early-universe cosmology LABoratory </p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">SEY :: COFFEE_DATA_LINK</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">&gt; SELECT_SUBJECT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bean-name"><span class="toc-number">1.2.</span> <span class="toc-text">
+                        INITIALIZING...
+                    </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.1.</span> <span class="toc-text">&gt; ORIGIN_COORDINATES</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.2.</span> <span class="toc-text">&gt; BIO_ANALYSIS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.3.</span> <span class="toc-text">&gt; MARKET_VALUE (DDP)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.4.</span> <span class="toc-text">
+                        
+                        &gt; SENSORY_PROFILE_DECODED
+                    </span></a></li></ol></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
