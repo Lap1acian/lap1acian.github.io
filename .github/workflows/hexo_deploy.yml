@@ -15,15 +15,14 @@ jobs:
       with:
         path: build
         submodules: true
-        token : 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
+        token: ${{ secrets.GH_PAT }}
 
-    
     - name: Checkout the deploy repository
       uses: actions/checkout@v4
       with:
         path: deploy
         ref: gh-pages
-        token : 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
+        token: ${{ secrets.GH_PAT }}
 
         
     - name: Set up Node.js
@@ -56,7 +55,7 @@ jobs:
 
     - name: Deploy to GitHub Pages
       env:
-        GITHUB_TOKEN: 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
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
       run: |
         ls -alh
         rsync -avh --delete ./build/public/ ./deploy/ --exclude=".git"

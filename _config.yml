@@ -13,7 +13,7 @@ timezone: 'Asia/Seoul'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://rhinelab.kr
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -115,6 +115,5 @@ encrypt: # hexo-blog-encrypt
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://oauth2: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@github.com/Lap1acian/lap1acian.github.io.git
-  # example, https://github.com/hexojs/hexojs.github.io
+  repo: https://github.com/Lap1acian/lap1acian.github.io.git
   branch: gh-pages
