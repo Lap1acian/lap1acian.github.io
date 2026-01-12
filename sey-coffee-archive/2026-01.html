@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEY Coffee Protocol 2026 :: RHINE-LAB-KR</title>
+    <title>SEY Coffee Archive - 2026.01 :: RHINE-LAB-KR</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -165,18 +165,18 @@
                     <h1 class="text-lg md:text-xl font-bold tracking-tight leading-none">RHINE-LAB-KR</h1>
                 </a>
                 <div class="text-[9px] md:text-[10px] text-slate-500 dark:text-rhine-neon tracking-[0.2em] md:tracking-[0.3em] font-mono font-bold mt-0.5 md:mt-1">
-                    ECOLOGICAL SECTION
+                    ECOLOGICAL SECTION <span class="text-rhine-accent">// ARCHIVE: 2026.01</span>
                 </div>
             </div>
         </div>
 
         <div class="flex items-center gap-3 md:gap-6 font-mono text-xs">
             
-            <!-- Archive Button (Main Page) -->
-            <button id="archive-btn" class="flex items-center gap-1 md:gap-2 px-2 md:px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-600 hover:bg-rhine-accent hover:text-white hover:border-rhine-accent transition-all cursor-pointer">
-                <i data-lucide="archive" class="w-3 h-3"></i>
-                <span class="hidden md:inline font-bold">ARCHIVE</span>
-            </button>
+            <!-- Back Button (Archive Page) -->
+            <a href="/sey-coffee" class="flex items-center gap-1 md:gap-2 px-2 md:px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-600 hover:bg-rhine-accent hover:text-white hover:border-rhine-accent transition-all cursor-pointer">
+                <i data-lucide="arrow-left" class="w-3 h-3"></i>
+                <span class="hidden md:inline font-bold">BACK</span>
+            </a>
             
 
             <!-- Mode Toggle -->
@@ -305,55 +305,6 @@
 
     </main>
 
-    
-    <!-- Archive Modal -->
-    <div id="archive-modal" class="archive-modal fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="archive-overlay"></div>
-        <div class="archive-modal-content rhine-glass bg-light-panel dark:bg-dark-panel p-6 md:p-8 relative z-10 w-full max-w-sm rounded-sm">
-            <div class="tech-corner corner-tl"></div>
-            <div class="tech-corner corner-tr"></div>
-            <div class="tech-corner corner-bl"></div>
-            <div class="tech-corner corner-br"></div>
-
-            <div class="flex items-center justify-between mb-6">
-                <h3 class="text-lg font-bold uppercase tracking-wider flex items-center gap-2">
-                    <i data-lucide="archive" class="w-5 h-5 text-rhine-accent"></i>
-                    Archive Index
-                </h3>
-                <button id="archive-close" class="text-slate-400 hover:text-rhine-accent transition-colors">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-
-            <div class="border-t border-slate-200 dark:border-slate-700 pt-4">
-                <ul id="archive-list" class="space-y-2 max-h-64 overflow-y-auto">
-                    
-                        
-                        <li>
-                            <a href="/sey-coffee-archive/Before 2026" class="flex items-center justify-between p-3 bg-slate-100 dark:bg-slate-800/50 hover:bg-rhine-accent hover:text-white rounded transition-all group">
-                                <span class="font-mono font-bold tracking-wider">Before 2026</span>
-                                <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"></i>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="/sey-coffee-archive/2026-01" class="flex items-center justify-between p-3 bg-slate-100 dark:bg-slate-800/50 hover:bg-rhine-accent hover:text-white rounded transition-all group">
-                                <span class="font-mono font-bold tracking-wider">2026.01</span>
-                                <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"></i>
-                            </a>
-                        </li>
-                        
-                    
-                </ul>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700">
-                <button id="archive-close-btn" class="w-full py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded font-mono font-bold text-sm uppercase tracking-wider transition-colors">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
     
 
     <script>
@@ -598,33 +549,6 @@
         }, 1000);
 
         // --- ARCHIVE MODAL ---
-        
-        const archiveBtn = document.getElementById('archive-btn');
-        const archiveModal = document.getElementById('archive-modal');
-        const archiveOverlay = document.getElementById('archive-overlay');
-        const archiveClose = document.getElementById('archive-close');
-        const archiveCloseBtn = document.getElementById('archive-close-btn');
-
-        function openArchiveModal() {
-            archiveModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeArchiveModal() {
-            archiveModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        archiveBtn.addEventListener('click', openArchiveModal);
-        archiveOverlay.addEventListener('click', closeArchiveModal);
-        archiveClose.addEventListener('click', closeArchiveModal);
-        archiveCloseBtn.addEventListener('click', closeArchiveModal);
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && archiveModal.classList.contains('active')) {
-                closeArchiveModal();
-            }
-        });
         
 
         window.addEventListener('DOMContentLoaded', () => {
